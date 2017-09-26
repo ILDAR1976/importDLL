@@ -1,21 +1,21 @@
 package edu.ImportDLL;
 
+import com.sun.jna.Library;
 import com.sun.jna.Native;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 
 public class ImportDll {
 
 	MyCode lib;
 
-	public interface MyCode extends com.sun.jna.Library {
-		boolean Print();
+	public interface MyCode extends Library {
+		void Print();
+		void sayHello();
 	};
 
 	public void loadLibraryFromJar(String name) throws IOException {
@@ -40,7 +40,7 @@ public class ImportDll {
 		if (filename != null) {
 			parts = filename.split("\\.", 2);
 			prefix = parts[0];
-			suffix = (parts.length > 1) ? "." + parts[parts.length - 1] : null; // Thanks, davs! :-)
+			suffix = (parts.length > 1) ? "." + parts[parts.length - 1] : null; 
 		}
 
 		if (filename == null || prefix.length() < 3) {
@@ -81,6 +81,7 @@ public class ImportDll {
 
 		my.loadLibraryFromJar("FunLib");
 
+		my.lib.sayHello();
 		my.lib.Print();
 	}
 }
