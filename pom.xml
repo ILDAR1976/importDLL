@@ -8,11 +8,11 @@
 	<packaging>jar</packaging>
 
 	<name>ImportDLL</name>
-	
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--  This is the main class-->
 		<main.class>edu.ImportDLL.ImportDll</main.class>
 	</properties>
 
